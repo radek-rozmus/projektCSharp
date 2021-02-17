@@ -59,5 +59,32 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+
+        <Label x:Name="User" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="11" Grid.RowSpan="2" FontSize="18" Padding="12,7" FontWeight="Medium">Czytelnik: </Label>
+        <Button x:Name="LogOutButton" 
+                Grid.Column="12" 
+                Grid.Row="0" 
+                Grid.ColumnSpan="5" 
+                Grid.RowSpan="2" 
+                FontSize="15" 
+                Content="Wyloguj"
+                Click="LogOutButtonClick">
+        </Button>
+        <ListBox x:Name="BooksList" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="16" Grid.RowSpan="21" >
+
+        </ListBox>
+        <Button 
+                x:Name="RentBookButton"
+                Grid.Column="1" 
+                Grid.Row="25" 
+                Grid.ColumnSpan="16"
+                Grid.RowSpan="2" 
+                Content="Wypożycz" 
+                HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" 
+                FontSize="15"
+                Click="RentBookButtonClick">
+            
+        </Button>
     </Grid>
 </Page>

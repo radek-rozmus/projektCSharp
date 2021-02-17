@@ -20,9 +20,54 @@ namespace BibliotekaWPF
     /// </summary>
     public partial class ApplicationPage : Page
     {
-        public ApplicationPage()
+        MainWindow Mw { get; set; }
+        private int login;
+        private int Login { get => login; set => login = value; }
+       
+
+        public ApplicationPage(int _login)
         {
             InitializeComponent();
+            Mw = (MainWindow)Application.Current.MainWindow;
+            Login = _login;
+        }
+
+        public void GenerateUserPage()
+        {
+                User.Content = User.Content.ToString() + " " + Login;
+                
+                using (var dbContext = new BibliotekaDBContext())
+                {
+                var books = dbContext.Ksiazki.Where(book => book.Wypozyczona == false);
+                foreach (Ksiazki book in books)
+                {
+                    var Autor = dbContext.Autorzy.Where(autor => autor.IDAutora == book.Autor)
+                                                  .Select(autor => autor.ImieAutora)
+                                                  .First();
+                    Autor = Autor.TrimEnd(' ');
+                    Autor += ' ';
+
+                    Autor += dbContext.Autorzy.Where(autor => autor.IDAutora == book.Autor)
+                                                  .Select(autor => autor.NazwiskoAutora)
+                                                  .First();
+                    Autor = Autor.TrimEnd(' ');
+
+                    BooksList.Items.Add(new ListBoxItem() {Tag = book.IDKsiazki, Content = $"\"{book.Tytul.TrimEnd(' ')}\" - {Autor}", FontSize=12 });
+                    
+                }
+            }
+
+            
+        }
+
+        private void LogOutButtonClick(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void RentBookButtonClick(object sender, RoutedEventArgs e)
+        {
+            
+            BooksList.Items.Remove(BooksList.SelectedItem);
         }
     }
 }

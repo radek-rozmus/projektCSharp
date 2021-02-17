@@ -63,7 +63,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Frame Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="18" Grid.RowSpan="30" Source="LogInPage.xaml">
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="18" Grid.RowSpan="30">
         </Frame>
     </Grid>
 

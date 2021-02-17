@@ -81,7 +81,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDCzy__36B12243">
+        <Association Name="FK__Wypozycze__IDCzy__35BCFE0A">
           <End Role="Czytelnicy" Type="Self.Czytelnicy" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,7 +93,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDKsi__37A5467C">
+        <Association Name="FK__Wypozycze__IDKsi__36B12243">
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -119,11 +119,11 @@
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDCzy__36B12243" Association="Self.FK__Wypozycze__IDCzy__36B12243">
+          <AssociationSet Name="FK__Wypozycze__IDCzy__35BCFE0A" Association="Self.FK__Wypozycze__IDCzy__35BCFE0A">
             <End Role="Czytelnicy" EntitySet="Czytelnicy" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDKsi__37A5467C" Association="Self.FK__Wypozycze__IDKsi__37A5467C">
+          <AssociationSet Name="FK__Wypozycze__IDKsi__36B12243" Association="Self.FK__Wypozycze__IDKsi__36B12243">
             <End Role="Ksiazki" EntitySet="Ksiazki" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
@@ -158,7 +158,7 @@
           <Property Name="NumerDomu" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="NumerLokalu" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
           <Property Name="EMail" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDCzy__36B12243" FromRole="Czytelnicy" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDCzy__35BCFE0A" FromRole="Czytelnicy" ToRole="Wypozyczenia" />
         </EntityType>
         <EntityType Name="Kategorie">
           <Key>
@@ -179,7 +179,7 @@
           <Property Name="Wypozyczona" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Autorzy" Relationship="Self.FK__Ksiazki__Autor__2B3F6F97" FromRole="Ksiazki" ToRole="Autorzy" />
           <NavigationProperty Name="Kategorie" Relationship="Self.FK__Ksiazki__Kategor__2A4B4B5E" FromRole="Ksiazki" ToRole="Kategorie" />
-          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDKsi__37A5467C" FromRole="Ksiazki" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDKsi__36B12243" FromRole="Ksiazki" ToRole="Wypozyczenia" />
         </EntityType>
         <EntityType Name="Wypozyczenia">
           <Key>
@@ -190,8 +190,8 @@
           <Property Name="IDKsiazki" Type="Int32" Nullable="false" />
           <Property Name="DataWypozyczenia" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="StatusWypozyczenia" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Czytelnicy" Relationship="Self.FK__Wypozycze__IDCzy__36B12243" FromRole="Wypozyczenia" ToRole="Czytelnicy" />
-          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Wypozycze__IDKsi__37A5467C" FromRole="Wypozyczenia" ToRole="Ksiazki" />
+          <NavigationProperty Name="Czytelnicy" Relationship="Self.FK__Wypozycze__IDCzy__35BCFE0A" FromRole="Wypozyczenia" ToRole="Czytelnicy" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Wypozycze__IDKsi__36B12243" FromRole="Wypozyczenia" ToRole="Ksiazki" />
         </EntityType>
         <Association Name="FK__Ksiazki__Autor__2B3F6F97">
           <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="1" />
@@ -205,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDCzy__36B12243">
+        <Association Name="FK__Wypozycze__IDCzy__35BCFE0A">
           <End Role="Czytelnicy" Type="Self.Czytelnicy" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDKsi__37A5467C">
+        <Association Name="FK__Wypozycze__IDKsi__36B12243">
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -251,7 +251,7 @@
             <End Role="Autorzy" EntitySet="Autorzy" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDCzy__36B12243" Association="Self.FK__Wypozycze__IDCzy__36B12243">
+          <AssociationSet Name="FK__Wypozycze__IDCzy__35BCFE0A" Association="Self.FK__Wypozycze__IDCzy__35BCFE0A">
             <End Role="Czytelnicy" EntitySet="Czytelnicy" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
@@ -259,7 +259,7 @@
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDKsi__37A5467C" Association="Self.FK__Wypozycze__IDKsi__37A5467C">
+          <AssociationSet Name="FK__Wypozycze__IDKsi__36B12243" Association="Self.FK__Wypozycze__IDKsi__36B12243">
             <End Role="Ksiazki" EntitySet="Ksiazki" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>

@@ -14,5 +14,6 @@ namespace BibliotekaWPF
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

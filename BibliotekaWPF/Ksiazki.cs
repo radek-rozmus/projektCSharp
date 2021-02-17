@@ -10,9 +10,10 @@
 namespace BibliotekaWPF
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     
-    public partial class Ksiazki
+    public partial class Ksiazki : IEnumerable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ksiazki()
@@ -31,5 +32,10 @@ namespace BibliotekaWPF
         public virtual Kategorie Kategorie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypozyczenia> Wypozyczenia { get; set; }
+
+        public IEnumerator GetEnumerator()
+        {
+            return (IEnumerator)this;
+        }
     }
 }

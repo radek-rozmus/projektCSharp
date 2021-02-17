@@ -23,6 +23,7 @@ namespace BibliotekaWPF
         public MainWindow()
         {
             InitializeComponent();
+            this.MainFrame.Content = new LogInPage();
         }
     }
 }
