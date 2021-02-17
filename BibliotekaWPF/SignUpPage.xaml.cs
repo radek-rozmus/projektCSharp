@@ -51,6 +51,7 @@ namespace BibliotekaWPF
                         ImieCzytelnika = this.NameBox.Text,
                         NazwiskoCzytelnika = this.SurnameBox.Text,
                         Plec = this.GenderBoxes,
+                        DataPrzystapienia = DateTime.Now,
                         Miasto = this.CityBox.Text,
                         KodPocztowy = this.PostalCodeBox.Text,
                         Ulica = this.StreetBox.Text,

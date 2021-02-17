@@ -36,8 +36,8 @@ namespace BibliotekaWPF
         {
                 User.Content = User.Content.ToString() + " " + Login;
                 
-                using (var dbContext = new BibliotekaDBContext())
-                {
+            using (var dbContext = new BibliotekaDBContext())
+            {
                 var books = dbContext.Ksiazki.Where(book => book.Wypozyczona == false);
                 foreach (Ksiazki book in books)
                 {
@@ -52,7 +52,7 @@ namespace BibliotekaWPF
                                                   .First();
                     Autor = Autor.TrimEnd(' ');
 
-                    BooksList.Items.Add(new ListBoxItem() {Tag = book.IDKsiazki, Content = $"\"{book.Tytul.TrimEnd(' ')}\" - {Autor}", FontSize=12 });
+                    BooksList.Items.Add(new ListBoxItem() {Tag = (int)book.IDKsiazki, Content = $"\"{book.Tytul.TrimEnd(' ')}\" - {Autor}", FontSize=12 });
                     
                 }
             }
@@ -66,7 +66,24 @@ namespace BibliotekaWPF
 
         private void RentBookButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            using (var dbContext = new BibliotekaDBContext())
+            {
+                ListBoxItem item = (ListBoxItem)BooksList.SelectedItem;
+                int tag = (int)item.Tag;
+                dbContext.Ksiazki.Where(book => book.IDKsiazki == tag).First().Wypozyczona = true;
+
+                var wypozyczenie = new Wypozyczenia()
+                {
+                    IDCzytelnika = Login,
+                    IDKsiazki = tag,
+                    DataWypozyczenia = DateTime.Today,
+                    StatusWypozyczenia = "AKTYWNE"
+                };
+
+                dbContext.Wypozyczenia.Add(wypozyczenie);
+
+                dbContext.SaveChanges();
+            }
             BooksList.Items.Remove(BooksList.SelectedItem);
         }
     }
