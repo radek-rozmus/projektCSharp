@@ -25,5 +25,10 @@ namespace BibliotekaWPF
             InitializeComponent();
             this.MainFrame.Content = new LogInPage();
         }
+
+        private void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

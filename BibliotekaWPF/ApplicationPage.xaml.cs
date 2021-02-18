@@ -20,9 +20,12 @@ namespace BibliotekaWPF
     /// </summary>
     public partial class ApplicationPage : Page
     {
-        MainWindow Mw { get; set; }
-        private int login;
-        private int Login { get => login; set => login = value; }
+        MainWindow mw;
+        ReturnBookWindow returnBook;
+        int login;
+        public int Login { get => login; set => login = value; }
+        public MainWindow Mw { get => mw; set => mw = value; }
+        public ReturnBookWindow ReturnBook { get => returnBook; set => returnBook = value; }
        
 
         public ApplicationPage(int _login)
@@ -30,6 +33,7 @@ namespace BibliotekaWPF
             InitializeComponent();
             Mw = (MainWindow)Application.Current.MainWindow;
             Login = _login;
+            ReturnBook = null;
         }
 
         public void GenerateUserPage()
@@ -62,6 +66,8 @@ namespace BibliotekaWPF
 
         private void LogOutButtonClick(object sender, RoutedEventArgs e)
         {
+            Mw.MainFrame.Content = new LogInPage();
+            ReturnBook.Close();
         }
 
         private void RentBookButtonClick(object sender, RoutedEventArgs e)
@@ -85,6 +91,16 @@ namespace BibliotekaWPF
                 dbContext.SaveChanges();
             }
             BooksList.Items.Remove(BooksList.SelectedItem);
+        }
+
+        private void ReturnBookButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (ReturnBook == null)
+            {
+                ReturnBook = new ReturnBookWindow(Login);
+                ReturnBook.GenerateReturnPage();
+                ReturnBook.Show();
+            }
         }
     }
 }
