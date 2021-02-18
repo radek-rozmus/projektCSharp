@@ -60,14 +60,15 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="User" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="6" Grid.RowSpan="2" FontSize="16" Padding="10,10,16,0" FontWeight="Medium">Czytelnik: </Label>
+        <Label x:Name="User" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="8" Grid.RowSpan="2" FontSize="16" VerticalContentAlignment="Center" FontWeight="Medium">CZYTELNIK: </Label>
         <Button x:Name="ReturnBookButton" 
                 Grid.Column="9" 
                 Grid.Row="0" 
                 Grid.ColumnSpan="4" 
                 Grid.RowSpan="2" 
-                FontSize="15" 
-                Content="Zwróć"
+                FontSize="14"
+                FontWeight="Medium"
+                Content="ZWRÓĆ"
                 Click="ReturnBookButtonClick">
         </Button>
         <Button x:Name="LogOutButton" 
@@ -75,8 +76,9 @@
                 Grid.Row="0" 
                 Grid.ColumnSpan="4" 
                 Grid.RowSpan="2" 
-                FontSize="15" 
-                Content="Wyloguj"
+                FontSize="14"
+                FontWeight="Medium"
+                Content="WYLOGUJ"
                 Click="LogOutButtonClick">
         </Button>
         <ListBox x:Name="BooksList" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="16" Grid.RowSpan="21" >
@@ -88,10 +90,11 @@
                 Grid.Row="25" 
                 Grid.ColumnSpan="16"
                 Grid.RowSpan="2" 
-                Content="Wypożycz" 
+                Content="WYPOŻYCZ KSIĄŻKĘ" 
                 HorizontalContentAlignment="Center" 
                 VerticalContentAlignment="Center" 
-                FontSize="15"
+                FontSize="14"
+                FontWeight="Medium"
                 Click="RentBookButtonClick">
             
         </Button>

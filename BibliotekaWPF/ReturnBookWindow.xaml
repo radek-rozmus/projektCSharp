@@ -60,8 +60,8 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
-        <Label x:Name="User" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="2" FontSize="16" Padding="10,10,16,0" FontWeight="Medium">Czytelnik: </Label>
+
+        <Label x:Name="User" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="2" FontSize="16" VerticalContentAlignment="Center" FontWeight="Medium">CZYTELNIK: </Label>
         <ListBox x:Name="BooksList" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="16" Grid.RowSpan="22" >
 
         </ListBox>
@@ -74,7 +74,8 @@
                 Content="ZWRÓĆ KSIĄŻKĘ" 
                 HorizontalContentAlignment="Center" 
                 VerticalContentAlignment="Center" 
-                FontSize="15"
+                FontSize="14"
+                FontWeight="Medium"
                 Click="ReturnBookDecisionButtonClick">
 
         </Button>

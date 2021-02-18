@@ -30,8 +30,10 @@ namespace BibliotekaWPF
 
         private void SignUpButtonClick(object sender, RoutedEventArgs e)
         {
+            int newUserID = 0;
             try
             {
+
                 ValidateSignUpForm(
                     this.NameBox.Text,
                     this.SurnameBox.Text,
@@ -62,11 +64,45 @@ namespace BibliotekaWPF
 
                     dbContext.Czytelnicy.Add(czytelnik);
                     dbContext.SaveChanges();
+
+                    newUserID = czytelnik.IDCzytelnika;
                 }
+                Mw.MainFrame.Content = new IDPage(newUserID);
             }
             catch(SignUpException exception)
             {
-                ComunicateBanner.Text =exception.Message;
+                string Comunicate = null;
+                switch (exception.Message)
+                {
+                    case "email":
+                        Comunicate = "Błędny email.";
+                        break;
+                    case "numer domu":
+                        Comunicate = "Błędny numer domu.";
+                        break;
+                    case "numer lokalu":
+                        Comunicate = "Błędny numer lokalu.";
+                        break;
+                    case "ulica":
+                        Comunicate = "Błędna nazwa ulicy.";
+                        break;
+                    case "kod pocztowy":
+                        Comunicate = "Format kodu pocztowego: 00-000";
+                        break;
+                    case "miasto":
+                        Comunicate = "Błędna nazwa miasta.";
+                        break;
+                    case "płeć":
+                        Comunicate = "Wybierz płeć.";
+                        break;
+                    case "nazwisko":
+                        Comunicate = "Niepoprawne nazwisko.";
+                        break;
+                    case "imię":
+                        Comunicate = "Niepoprawne imię.";
+                        break;
+                }
+                ComunicateBanner.Text = Comunicate;
             }
 
         }
@@ -227,6 +263,7 @@ namespace BibliotekaWPF
 
             if (e != null)
             {
+                ComunicateBanner.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0, 0));
                 throw e;
             }
         }

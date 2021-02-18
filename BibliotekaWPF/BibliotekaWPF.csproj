@@ -93,6 +93,9 @@
     <Compile Include="Czytelnicy.cs">
       <DependentUpon>BibliotekaDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IDPage.xaml.cs">
+      <DependentUpon>IDPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kategorie.cs">
       <DependentUpon>BibliotekaDBModel.tt</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <DependentUpon>BibliotekaDBModel.tt</DependentUpon>
     </Compile>
     <Page Include="ApplicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IDPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
