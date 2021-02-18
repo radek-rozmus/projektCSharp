@@ -34,11 +34,12 @@ namespace BibliotekaWPF
             Mw = (MainWindow)Application.Current.MainWindow;
             Login = _login;
             ReturnBook = null;
+            User.Content = User.Content.ToString() + " " + Login;
         }
 
         public void GenerateUserPage()
         {
-                User.Content = User.Content.ToString() + " " + Login;
+            BooksList.Items.Clear();
                 
             using (var dbContext = new BibliotekaDBContext())
             {
@@ -67,30 +68,38 @@ namespace BibliotekaWPF
         private void LogOutButtonClick(object sender, RoutedEventArgs e)
         {
             Mw.MainFrame.Content = new LogInPage();
-            ReturnBook.Close();
+            if (ReturnBook != null)
+            {
+                ReturnBook.Close();
+                ReturnBook = null;
+            }
         }
 
         private void RentBookButtonClick(object sender, RoutedEventArgs e)
         {
-            using (var dbContext = new BibliotekaDBContext())
+            if (BooksList.SelectedItem != null)
             {
-                ListBoxItem item = (ListBoxItem)BooksList.SelectedItem;
-                int tag = (int)item.Tag;
-                dbContext.Ksiazki.Where(book => book.IDKsiazki == tag).First().Wypozyczona = true;
-
-                var wypozyczenie = new Wypozyczenia()
+                using (var dbContext = new BibliotekaDBContext())
                 {
-                    IDCzytelnika = Login,
-                    IDKsiazki = tag,
-                    DataWypozyczenia = DateTime.Today,
-                    StatusWypozyczenia = "AKTYWNE"
-                };
+                    ListBoxItem item = (ListBoxItem)BooksList.SelectedItem;
+                    int tag = (int)item.Tag;
+                    dbContext.Ksiazki.Where(book => book.IDKsiazki == tag).First().Wypozyczona = true;
 
-                dbContext.Wypozyczenia.Add(wypozyczenie);
+                    var wypozyczenie = new Wypozyczenia()
+                    {
+                        IDCzytelnika = Login,
+                        IDKsiazki = tag,
+                        DataWypozyczenia = DateTime.Today,
+                        StatusWypozyczenia = "AKTYWNE"
+                    };
 
-                dbContext.SaveChanges();
+                    dbContext.Wypozyczenia.Add(wypozyczenie);
+
+                    dbContext.SaveChanges();
+                }
+                this.GenerateUserPage();
+                if (ReturnBook != null) ReturnBook.GenerateReturnPage();
             }
-            BooksList.Items.Remove(BooksList.SelectedItem);
         }
 
         private void ReturnBookButtonClick(object sender, RoutedEventArgs e)
