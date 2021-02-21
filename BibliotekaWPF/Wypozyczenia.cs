@@ -10,8 +10,7 @@
 namespace BibliotekaWPF
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class Wypozyczenia
     {
         public int IDWypozyczenia { get; set; }
