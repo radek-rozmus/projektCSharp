@@ -89,7 +89,8 @@ namespace BibliotekaWPF
                     {
                         IDCzytelnika = Login,
                         IDKsiazki = tag,
-                        DataWypozyczenia = DateTime.Today,
+                        DataWypozyczenia = DateTime.Now,
+                        DataOddania = null,
                         StatusWypozyczenia = "AKTYWNE"
                     };
 

@@ -18,6 +18,7 @@ namespace BibliotekaWPF
         public int IDCzytelnika { get; set; }
         public int IDKsiazki { get; set; }
         public System.DateTime DataWypozyczenia { get; set; }
+        public Nullable<System.DateTime> DataOddania { get; set; }
         public string StatusWypozyczenia { get; set; }
     
         public virtual Czytelnicy Czytelnicy { get; set; }

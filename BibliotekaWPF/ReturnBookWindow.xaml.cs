@@ -75,6 +75,7 @@ namespace BibliotekaWPF
                     int tag = (int)item.Tag;
                     Wypozyczenia Rent = dbContext.Wypozyczenia.Where(rent => rent.IDWypozyczenia == tag).First();
                     Rent.StatusWypozyczenia = "ODDANE";
+                    Rent.DataOddania = DateTime.Now;
                     dbContext.Ksiazki.Where(book => book.IDKsiazki == Rent.IDKsiazki).First().Wypozyczona = false;
                     dbContext.SaveChanges();
                 }
