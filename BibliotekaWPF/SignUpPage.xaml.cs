@@ -7,10 +7,18 @@ using System.Windows.Media;
 namespace BibliotekaWPF
 {
     /// <summary>
-    /// Logika interakcji dla klasy SingUpPage.xaml
+    /// Logika interakcji dla klasy SignUpPage.xaml
+    /// Strona SignUpPage to 2 z 4 stron umieszczanych w obiekcie MainFrame podczas działania programu.
     /// </summary>
+
     public partial class SignUpPage : Page
     {
+        /// <summary>
+        /// Właściwość Mw jest ustawiana przez konstruktor klasy SignUpPage na okno główne aplikacji.
+        /// Kontekst służący do odwoływania się do właściwości okna głównego.
+        /// Właściwość GenderBoxes typu string reprezentuje aktualnie zaznaczony na stronie rejestracji checkbox w polu PŁEĆ.
+        /// Właściwość GenderBoxes przyjmuje w programie wartości "K" - kobieta, "M" - mężczyzna lub null, jeżeli żadna z płci nie została zaznaczona.
+        /// </summary>
         MainWindow Mw { get; set; }
         string GenderBoxes { get; set; }
         public SignUpPage()
@@ -18,6 +26,20 @@ namespace BibliotekaWPF
             InitializeComponent();
             Mw = (MainWindow)Application.Current.MainWindow;
         }
+
+        /// <summary>
+        /// Funkcja SignUpButtonClick jest wywoływana po naciśnięciu przez użytkownika przycisku "SignUpButton".
+        /// Funkcja ta próbuje:
+        /// - wywołać dla wartości pól formularza rejestracji metodę ValidateSignUpForm
+        /// - utworzyć kontekst bazy danych i obiekt repezentujący nowego czytelnika z przypisanymi zwalidowanymi wartościami z formularza rejestracji.
+        /// - dodać użytkownika do bazy danych i zapisać zmiany
+        /// - zapisać w zmiennej newUserID identyfikator nowo dodanego użytkownika.
+        /// - pokazać użytkownikowi jego nowe id poprzez zmianę zawartości obiektu MainFrame na stonę prezentacji ID (IDPage)
+        /// Jeżeli którakolwiek z powyższych czynności się nie powiodła w programie wyrzucany jest wyjątek, a funkcja wyświetla użytkownikowi stosowny komunikat.
+        /// </summary>
+        /// /// <seealso cref="ValidateSignUpForm(string, string, string, string, string, string, string, string, string)">
+        /// Metoda walidująca dane wprowadzone w formularzu rejestracji.
+        /// </seealso>
 
         private void SignUpButtonClick(object sender, RoutedEventArgs e)
         {
@@ -92,16 +114,32 @@ namespace BibliotekaWPF
                     case "imię":
                         Comunicate = "Niepoprawne imię.";
                         break;
+                    default:
+                        Comunicate = "Nieznany błąd.";
+                        break;
                 }
                 ComunicateBanner.Text = Comunicate;
             }
 
         }
 
+        /// <summary>
+        /// Funkcja ValidateSignUpForm sprawdza poprawność danych wprowadzonych przez użytkownika w formularzu rejestracji.
+        /// Właściwość e zawiera ostatni wyjątek utworzony, jeżeli któryś z parametrów funkcji nie przejdzie testu poprawności
+        /// lub null ustawiony domyślnie, oraz nie zmieniany w przypadku kiedy wszystkie parametry są poprawne.
+        /// Wyjątki zapisywane są do właściwości e ze skróconym komunikatem błędu we właściwości Message.
+        /// Funkcja w przypadku wystąpienia wyjątku wyrzuca go i ustawia kolor panelu komunikatu błądu na stronie na czerwony.
+        /// </summary>
+
         private void ValidateSignUpForm(string _name, string _surname, string _gender, string _city, string _postalcode, string _street, string _housenumber, string _localnumber, string _email)
         {
             SignUpException e = null;
             int spacesCounter = 0;
+
+            /// /// <param name="_name">
+            /// Parametr reprezentuje imię czytelnika.
+            /// Sprawdzenie czy zmienna nie jest pusta, oraz czy podane imie nie składa się z samych spacji.
+            /// </param>
 
             if (_name.Length == 0 || _name == null)
             {
@@ -121,6 +159,11 @@ namespace BibliotekaWPF
 
             spacesCounter = 0;
 
+            /// <param name="_surname">
+            /// Parametr reprezentuje nazwisko czytelnika.
+            /// Sprawdzenie czy zmienna nie jest pusta, oraz czy podane nazwisko nie składa się z samych spacji.
+            /// </param>
+
             if (_surname.Length == 0 || _surname == null)
             {
                 e = new SignUpException("nazwisko");
@@ -139,10 +182,19 @@ namespace BibliotekaWPF
 
             spacesCounter = 0;
 
+            /// <param name="_gender">
+            /// Sprawdzenie czy został zaznaczony któryś z checkboxów reprezentujących płeć.
+            /// </param>
+
             if (!(_gender == "M" || _gender == "K"))
             {
                 e = new SignUpException("płeć");
             }
+
+            /// <param name="_city">
+            /// Parametr reprezentuje miejscowość zamieszkiwaną przez czytelnika.
+            /// Sprawdzenie czy zmienna nie jest pusta, oraz czy podana miejscowość nie składa się z samych spacji.
+            /// </param>
 
             if (_city.Length == 0 || _city == null)
             {
@@ -159,6 +211,11 @@ namespace BibliotekaWPF
                     e = new SignUpException("miasto");
                 }
             }
+
+            /// <param name="_postalcode">
+            /// Parametr reprezentuje kod pocztowy mjejscowości zamieszkiwanej przez czytelnika.
+            /// Sprawdzenie jest w wymaganym formacie "00-000".
+            /// </param>
 
             spacesCounter = 0;
 
@@ -184,6 +241,11 @@ namespace BibliotekaWPF
                 }
             }
 
+            /// <param name="_street">
+            /// Parametr reprezentuje ulicę zamieszkiwaną przez czytelnika.
+            /// Sprawdzenie czy zmienna nie jest pusta, oraz czy podana ulica nie składa się z samych spacji.
+            /// </param>
+
             if (_street.Length == 0 || _street == null)
             {
                 e = new SignUpException("ulica");
@@ -202,6 +264,12 @@ namespace BibliotekaWPF
 
             spacesCounter = 0;
 
+            /// <param name="_housenumber">
+            /// Parametr reprezentuje numer domu czytelnika.
+            /// Sprawdzenie czy zmienna nie jest pusta, nie jest dłuższa niż 5 znaków oraz czy podany numer składa się wyłącznie ze znaków alfanumerycznych.
+            /// </param>
+
+
             if (_housenumber.Length == 0 || _housenumber == null || _housenumber.Length > 5)
             {
                 e = new SignUpException("numer domu");
@@ -218,12 +286,22 @@ namespace BibliotekaWPF
                 }
             }
 
+            /// <param name="_localnumber">
+            /// Parametr reprezentuje numer lokalu czytelnika.
+            /// Sprawdzenie czy zmienna nie jest dłuższa niż 3 znaki.
+            /// </param>
+
             if (_localnumber.Length > 3)
             {
                 e = new SignUpException("numer lokalu");
             }
 
-            if(!(_email.Contains('@')))
+            /// <param name="_email">
+            /// Parametr reprezentuje adres email czytelnika.
+            /// Sprawdzenie czy zmienna jest w formacie example@email.sth
+            /// </param>
+
+            if (!(_email.Contains('@')))
             {
                 e = new SignUpException("email");
             }
@@ -259,27 +337,49 @@ namespace BibliotekaWPF
             }
         }
 
+        /// <summary>
+        /// Funkcja FemaleChecked wywoływana jest po zaznaczeniu checkboxa female.
+        /// </summary>
+
         private void FemaleChecked(object sender, RoutedEventArgs e)
         {
             this.male.IsChecked = false;
             GenderBoxes = "K";
         }
 
+        /// <summary>
+        /// Funkcja GenderUnchecked wywoływana jest po odznaczeniu dowolnego checkboxa reprezentującego płeć czytelnika.
+        /// </summary>
+
         private void GenderUnchecked(object sender, RoutedEventArgs e)
         {
             GenderBoxes = null;
         }
 
+        /// <summary>
+        /// Funkcja MaleChecked wywoływana jest po zaznaczeniu checkboxa male.
+        /// </summary>
+        
         private void MaleChecked(object sender, RoutedEventArgs e)
         {
             this.female.IsChecked = false;
             GenderBoxes = "M";
         }
 
+        /// <summary>
+        /// Funkcja ToLogInPage jest wywoływana po naciśnięciu hiperłącza "Zaloguj się!".
+        /// Funkcja ta ustawia zawartość MainFrame na stronę logowania użytkownika (LogInPage).
+        /// </summary>
+
         private void ToLogInPageClick(object sender, RoutedEventArgs e)
         {
             Mw.MainFrame.Content = new LogInPage();
         }
+
+        /// <summary>
+        /// Klasa wyjątku SignUpException.
+        /// Klasa dziedziczy po klasie System.Exception.
+        /// </summary>
 
         public class SignUpException : Exception
         {

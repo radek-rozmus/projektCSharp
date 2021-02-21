@@ -7,15 +7,28 @@ namespace BibliotekaWPF
 {
     /// <summary>
     /// Logika interakcji dla klasy LogInPage.xaml
+    /// Strona LogInPage to 1 z 4 stron umieszczanych w obiekcie MainFrame podczas działania programu.
     /// </summary>
     public partial class LogInPage : Page
     {
+        /// <summary>
+        /// Właściwość Mw jest ustawiana przez konstruktor klasy LogInPage na okno główne aplikacji.
+        /// Kontekst służący do odwoływania się do właściwości okna głównego.
+        /// </summary>
+
         MainWindow Mw { get; set; }
         public LogInPage()
         {
             InitializeComponent();
             Mw = (MainWindow)Application.Current.MainWindow;
         }
+
+        /// <summary>
+        /// Funkcja LogInButtonClick jest wywoływana po naciśnięciu przez użytkownika przycisku "LogInButton".
+        /// Funkcja ta wyszukuje użytkownika w bazie danych po jego identyfikatorze (IDCzytelnika).
+        /// Jeżeli logowanie się powiodło to funkcja ustawia zawartość MainFrame na panel aplikacji (ApplicationPage).
+        /// Jeżeli logowanie się nie powiodło w programie wyrzucany jest wyjątek, a funkcja wyświetla użytkownikowi stosowny komunikat.
+        /// </summary>
 
         private void LogInButtonClick(object sender, RoutedEventArgs e)
         {
@@ -53,10 +66,21 @@ namespace BibliotekaWPF
             }
 
         }
+
+        /// <summary>
+        /// Funkcja ToSignUpPage jest wywoływana po naciśnięciu hiperłącza "Dołącz!".
+        /// Funkcja ta ustawia zawartość MainFrame na stronę rejestracji użytkownika (SignUpPage).
+        /// </summary>
+        
         private void ToSignUpPageClick(object sender, RoutedEventArgs e)
         {
             Mw.MainFrame.Content = new SignUpPage();
         }
+
+        /// <summary>
+        /// Klasa wyjątku LogInException.
+        /// Klasa dziedziczy po klasie System.Exception.
+        /// </summary>
 
         public class LogInException : Exception
         {
