@@ -28,14 +28,14 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja SignUpButtonClick jest wywoływana po naciśnięciu przez użytkownika przycisku "SignUpButton".
-        /// Funkcja ta próbuje:
+        /// Metoda SignUpButtonClick jest wywoływana po naciśnięciu przez użytkownika przycisku "SignUpButton".
+        /// Metoda ta próbuje:
         /// - wywołać dla wartości pól formularza rejestracji metodę ValidateSignUpForm
         /// - utworzyć kontekst bazy danych i obiekt repezentujący nowego czytelnika z przypisanymi zwalidowanymi wartościami z formularza rejestracji.
         /// - dodać użytkownika do bazy danych i zapisać zmiany
         /// - zapisać w zmiennej newUserID identyfikator nowo dodanego użytkownika.
         /// - pokazać użytkownikowi jego nowe id poprzez zmianę zawartości obiektu MainFrame na stonę prezentacji ID (IDPage)
-        /// Jeżeli którakolwiek z powyższych czynności się nie powiodła w programie wyrzucany jest wyjątek, a funkcja wyświetla użytkownikowi stosowny komunikat.
+        /// Jeżeli którakolwiek z powyższych czynności się nie powiodła w programie wyrzucany jest wyjątek, a metoda wyświetla użytkownikowi stosowny komunikat.
         /// </summary>
         /// /// <seealso cref="ValidateSignUpForm(string, string, string, string, string, string, string, string, string)">
         /// Metoda walidująca dane wprowadzone w formularzu rejestracji.
@@ -124,11 +124,11 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja ValidateSignUpForm sprawdza poprawność danych wprowadzonych przez użytkownika w formularzu rejestracji.
-        /// Właściwość e zawiera ostatni wyjątek utworzony, jeżeli któryś z parametrów funkcji nie przejdzie testu poprawności
+        /// Metoda ValidateSignUpForm sprawdza poprawność danych wprowadzonych przez użytkownika w formularzu rejestracji.
+        /// Właściwość e zawiera ostatni wyjątek utworzony, jeżeli któryś z parametrów metody nie przejdzie testu poprawności
         /// lub null ustawiony domyślnie, oraz nie zmieniany w przypadku kiedy wszystkie parametry są poprawne.
         /// Wyjątki zapisywane są do właściwości e ze skróconym komunikatem błędu we właściwości Message.
-        /// Funkcja w przypadku wystąpienia wyjątku wyrzuca go i ustawia kolor panelu komunikatu błądu na stronie na czerwony.
+        /// Metoda w przypadku wystąpienia wyjątku wyrzuca go i ustawia kolor panelu komunikatu błądu na stronie na czerwony.
         /// </summary>
 
         private void ValidateSignUpForm(string _name, string _surname, string _gender, string _city, string _postalcode, string _street, string _housenumber, string _localnumber, string _email)
@@ -338,7 +338,7 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja FemaleChecked wywoływana jest po zaznaczeniu checkboxa female.
+        /// Metoda FemaleChecked wywoływana jest po zaznaczeniu checkboxa female.
         /// </summary>
 
         private void FemaleChecked(object sender, RoutedEventArgs e)
@@ -348,7 +348,7 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja GenderUnchecked wywoływana jest po odznaczeniu dowolnego checkboxa reprezentującego płeć czytelnika.
+        /// Metoda GenderUnchecked wywoływana jest po odznaczeniu dowolnego checkboxa reprezentującego płeć czytelnika.
         /// </summary>
 
         private void GenderUnchecked(object sender, RoutedEventArgs e)
@@ -357,9 +357,9 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja MaleChecked wywoływana jest po zaznaczeniu checkboxa male.
+        /// Metoda MaleChecked wywoływana jest po zaznaczeniu checkboxa male.
         /// </summary>
-        
+
         private void MaleChecked(object sender, RoutedEventArgs e)
         {
             this.female.IsChecked = false;
@@ -367,8 +367,8 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja ToLogInPage jest wywoływana po naciśnięciu hiperłącza "Zaloguj się!".
-        /// Funkcja ta ustawia zawartość MainFrame na stronę logowania użytkownika (LogInPage).
+        /// Metoda ToLogInPage jest wywoływana po naciśnięciu hiperłącza "Zaloguj się!".
+        /// Metoda ta ustawia zawartość MainFrame na stronę logowania użytkownika (LogInPage).
         /// </summary>
 
         private void ToLogInPageClick(object sender, RoutedEventArgs e)

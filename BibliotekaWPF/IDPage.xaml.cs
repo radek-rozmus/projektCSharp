@@ -30,8 +30,8 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja NextButtonClick jest wywoływana po naciśnięciu przycisku "NextButton".
-        /// Funkcja ta ustawia zawartość MainFrame na stronę logowania użytkownika (LogInPage).
+        /// Metoda NextButtonClick jest wywoływana po naciśnięciu przycisku "NextButton".
+        /// Metoda ta ustawia zawartość MainFrame na stronę logowania użytkownika (LogInPage).
         /// </summary>
 
         private void NextButtonClick(object sender, RoutedEventArgs e)

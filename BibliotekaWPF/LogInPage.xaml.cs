@@ -24,10 +24,10 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja LogInButtonClick jest wywoływana po naciśnięciu przez użytkownika przycisku "LogInButton".
-        /// Funkcja ta wyszukuje użytkownika w bazie danych po jego identyfikatorze (IDCzytelnika).
-        /// Jeżeli logowanie się powiodło to funkcja ustawia zawartość MainFrame na panel aplikacji (ApplicationPage).
-        /// Jeżeli logowanie się nie powiodło w programie wyrzucany jest wyjątek, a funkcja wyświetla użytkownikowi stosowny komunikat.
+        /// Metoda LogInButtonClick jest wywoływana po naciśnięciu przez użytkownika przycisku "LogInButton".
+        /// Metoda ta wyszukuje użytkownika w bazie danych po jego identyfikatorze (IDCzytelnika).
+        /// Jeżeli logowanie się powiodło to metoda ustawia zawartość MainFrame na panel aplikacji (ApplicationPage).
+        /// Jeżeli logowanie się nie powiodło w programie wyrzucany jest wyjątek, a metoda wyświetla użytkownikowi stosowny komunikat.
         /// </summary>
 
         private void LogInButtonClick(object sender, RoutedEventArgs e)
@@ -68,10 +68,10 @@ namespace BibliotekaWPF
         }
 
         /// <summary>
-        /// Funkcja ToSignUpPage jest wywoływana po naciśnięciu hiperłącza "Dołącz!".
-        /// Funkcja ta ustawia zawartość MainFrame na stronę rejestracji użytkownika (SignUpPage).
+        /// Metoda ToSignUpPage jest wywoływana po naciśnięciu hiperłącza "Dołącz!".
+        /// Metoda ta ustawia zawartość MainFrame na stronę rejestracji użytkownika (SignUpPage).
         /// </summary>
-        
+
         private void ToSignUpPageClick(object sender, RoutedEventArgs e)
         {
             Mw.MainFrame.Content = new SignUpPage();
