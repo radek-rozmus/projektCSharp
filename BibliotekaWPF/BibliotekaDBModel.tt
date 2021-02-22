@@ -1,4 +1,14 @@
-﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+﻿/// <summary>
+        /// Metoda ReturnBookDecisionButton wywoływana jest w momencie naciśnięcia przez użytkownika przycisku ReturnBookDecisionButton.
+        /// Jeżeli użytkownik wybrał z listy książkę, którą zamierza zwrócić to dla danego wypożyczenia metoda zmienia StatusWypozyczenia na "ODDANE"
+        /// oraz dla oddanej książki W polu Wypozyczona status zostaje zmieniony na 0 (false);
+        /// Zmiany zostają zapisane, a panel użytkownika i panel zwrotu książek są ponownie renderowane.
+        /// </summary>/// <summary>
+        /// Metoda ReturnBookDecisionButton wywoływana jest w momencie naciśnięcia przez użytkownika przycisku ReturnBookDecisionButton.
+        /// Jeżeli użytkownik wybrał z listy książkę, którą zamierza zwrócić to dla danego wypożyczenia metoda zmienia StatusWypozyczenia na "ODDANE"
+        /// oraz dla oddanej książki W polu Wypozyczona status zostaje zmieniony na 0 (false);
+        /// Zmiany zostają zapisane, a panel użytkownika i panel zwrotu książek są ponownie renderowane.
+        /// </summary><#@ template language="C#" debug="false" hostspecific="true"#>
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@ 
  output extension=".cs"#><#
 

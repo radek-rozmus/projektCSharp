@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BibliotekaWPF"
         mc:Ignorable="d"
-        Title="BIBLIOTEKA" Height="620" Width="380"
+        Title="Biblioteka" Height="620" Width="380"
         Closing="ReturnBookWindowClosing">
     <Grid Background="#efefef">
         <Grid.ColumnDefinitions>
