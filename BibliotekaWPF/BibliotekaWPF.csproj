@@ -188,6 +188,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="book-8_icon-icons.com_49252.ico" />
+    <Resource Include="Office_-11_icon-icons.com_73986.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="BibliotekaDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BibliotekaDBModel.edmx</DependentUpon>
@@ -198,8 +202,6 @@
       <DependentUpon>BibliotekaDBModel.edmx</DependentUpon>
       <LastGenOutput>BibliotekaDBModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="book-8_icon-icons.com_49252.ico" />
-    <Resource Include="Office_-11_icon-icons.com_73986.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -22,6 +22,7 @@ namespace BibliotekaWPF
     
         public int IDKsiazki { get; set; }
         public string Tytul { get; set; }
+        public string Wydawnictwo { get; set; }
         public string Kategoria { get; set; }
         public int Autor { get; set; }
         public Nullable<System.DateTime> DataWydania { get; set; }

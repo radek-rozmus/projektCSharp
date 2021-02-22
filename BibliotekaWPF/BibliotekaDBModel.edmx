@@ -42,6 +42,7 @@
           </Key>
           <Property Name="IDKsiazki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tytul" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Wydawnictwo" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Kategoria" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Autor" Type="int" Nullable="false" />
           <Property Name="DataWydania" Type="date" />
@@ -58,7 +59,7 @@
           <Property Name="DataOddania" Type="datetime" />
           <Property Name="StatusWypozyczenia" Type="nchar" MaxLength="15" />
         </EntityType>
-        <Association Name="FK__Ksiazki__Autor__2B3F6F97">
+        <Association Name="FK__Ksiazki__Autor__2A4B4B5E">
           <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="1" />
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
           <ReferentialConstraint>
@@ -70,7 +71,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ksiazki__Kategor__2A4B4B5E">
+        <Association Name="FK__Ksiazki__Kategor__29572725">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
           <ReferentialConstraint>
@@ -82,7 +83,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDCzy__4316F928">
+        <Association Name="FK__Wypozycze__IDCzy__35BCFE0A">
           <End Role="Czytelnicy" Type="Self.Czytelnicy" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -94,7 +95,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDKsi__440B1D61">
+        <Association Name="FK__Wypozycze__IDKsi__36B12243">
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,19 +113,19 @@
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ksiazki" EntityType="Self.Ksiazki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Ksiazki__Autor__2B3F6F97" Association="Self.FK__Ksiazki__Autor__2B3F6F97">
+          <AssociationSet Name="FK__Ksiazki__Autor__2A4B4B5E" Association="Self.FK__Ksiazki__Autor__2A4B4B5E">
             <End Role="Autorzy" EntitySet="Autorzy" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ksiazki__Kategor__2A4B4B5E" Association="Self.FK__Ksiazki__Kategor__2A4B4B5E">
+          <AssociationSet Name="FK__Ksiazki__Kategor__29572725" Association="Self.FK__Ksiazki__Kategor__29572725">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDCzy__4316F928" Association="Self.FK__Wypozycze__IDCzy__4316F928">
+          <AssociationSet Name="FK__Wypozycze__IDCzy__35BCFE0A" Association="Self.FK__Wypozycze__IDCzy__35BCFE0A">
             <End Role="Czytelnicy" EntitySet="Czytelnicy" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDKsi__440B1D61" Association="Self.FK__Wypozycze__IDKsi__440B1D61">
+          <AssociationSet Name="FK__Wypozycze__IDKsi__36B12243" Association="Self.FK__Wypozycze__IDKsi__36B12243">
             <End Role="Ksiazki" EntitySet="Ksiazki" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
@@ -142,7 +143,7 @@
           <Property Name="ImieAutora" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="NazwiskoAutora" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="DataUrodzenia" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Ksiazki__Autor__2B3F6F97" FromRole="Autorzy" ToRole="Ksiazki" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Ksiazki__Autor__2A4B4B5E" FromRole="Autorzy" ToRole="Ksiazki" />
         </EntityType>
         <EntityType Name="Czytelnicy">
           <Key>
@@ -159,14 +160,14 @@
           <Property Name="NumerDomu" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="NumerLokalu" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
           <Property Name="EMail" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDCzy__4316F928" FromRole="Czytelnicy" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDCzy__35BCFE0A" FromRole="Czytelnicy" ToRole="Wypozyczenia" />
         </EntityType>
         <EntityType Name="Kategorie">
           <Key>
             <PropertyRef Name="Kategoria" />
           </Key>
           <Property Name="Kategoria" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Ksiazki__Kategor__2A4B4B5E" FromRole="Kategorie" ToRole="Ksiazki" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Ksiazki__Kategor__29572725" FromRole="Kategorie" ToRole="Ksiazki" />
         </EntityType>
         <EntityType Name="Ksiazki">
           <Key>
@@ -174,13 +175,14 @@
           </Key>
           <Property Name="IDKsiazki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tytul" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Wydawnictwo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Kategoria" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Autor" Type="Int32" Nullable="false" />
           <Property Name="DataWydania" Type="DateTime" Precision="0" />
           <Property Name="Wypozyczona" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Autorzy" Relationship="Self.FK__Ksiazki__Autor__2B3F6F97" FromRole="Ksiazki" ToRole="Autorzy" />
-          <NavigationProperty Name="Kategorie" Relationship="Self.FK__Ksiazki__Kategor__2A4B4B5E" FromRole="Ksiazki" ToRole="Kategorie" />
-          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDKsi__440B1D61" FromRole="Ksiazki" ToRole="Wypozyczenia" />
+          <NavigationProperty Name="Autorzy" Relationship="Self.FK__Ksiazki__Autor__2A4B4B5E" FromRole="Ksiazki" ToRole="Autorzy" />
+          <NavigationProperty Name="Kategorie" Relationship="Self.FK__Ksiazki__Kategor__29572725" FromRole="Ksiazki" ToRole="Kategorie" />
+          <NavigationProperty Name="Wypozyczenia" Relationship="Self.FK__Wypozycze__IDKsi__36B12243" FromRole="Ksiazki" ToRole="Wypozyczenia" />
         </EntityType>
         <EntityType Name="Wypozyczenia">
           <Key>
@@ -192,10 +194,10 @@
           <Property Name="DataWypozyczenia" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DataOddania" Type="DateTime" Precision="3" />
           <Property Name="StatusWypozyczenia" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Czytelnicy" Relationship="Self.FK__Wypozycze__IDCzy__4316F928" FromRole="Wypozyczenia" ToRole="Czytelnicy" />
-          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Wypozycze__IDKsi__440B1D61" FromRole="Wypozyczenia" ToRole="Ksiazki" />
+          <NavigationProperty Name="Czytelnicy" Relationship="Self.FK__Wypozycze__IDCzy__35BCFE0A" FromRole="Wypozyczenia" ToRole="Czytelnicy" />
+          <NavigationProperty Name="Ksiazki" Relationship="Self.FK__Wypozycze__IDKsi__36B12243" FromRole="Wypozyczenia" ToRole="Ksiazki" />
         </EntityType>
-        <Association Name="FK__Ksiazki__Autor__2B3F6F97">
+        <Association Name="FK__Ksiazki__Autor__2A4B4B5E">
           <End Role="Autorzy" Type="Self.Autorzy" Multiplicity="1" />
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,7 +209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDCzy__4316F928">
+        <Association Name="FK__Wypozycze__IDCzy__35BCFE0A">
           <End Role="Czytelnicy" Type="Self.Czytelnicy" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +221,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ksiazki__Kategor__2A4B4B5E">
+        <Association Name="FK__Ksiazki__Kategor__29572725">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,7 +233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wypozycze__IDKsi__440B1D61">
+        <Association Name="FK__Wypozycze__IDKsi__36B12243">
           <End Role="Ksiazki" Type="Self.Ksiazki" Multiplicity="1" />
           <End Role="Wypozyczenia" Type="Self.Wypozyczenia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -249,19 +251,19 @@
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" />
           <EntitySet Name="Ksiazki" EntityType="Self.Ksiazki" />
           <EntitySet Name="Wypozyczenia" EntityType="Self.Wypozyczenia" />
-          <AssociationSet Name="FK__Ksiazki__Autor__2B3F6F97" Association="Self.FK__Ksiazki__Autor__2B3F6F97">
+          <AssociationSet Name="FK__Ksiazki__Autor__2A4B4B5E" Association="Self.FK__Ksiazki__Autor__2A4B4B5E">
             <End Role="Autorzy" EntitySet="Autorzy" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDCzy__4316F928" Association="Self.FK__Wypozycze__IDCzy__4316F928">
+          <AssociationSet Name="FK__Wypozycze__IDCzy__35BCFE0A" Association="Self.FK__Wypozycze__IDCzy__35BCFE0A">
             <End Role="Czytelnicy" EntitySet="Czytelnicy" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ksiazki__Kategor__2A4B4B5E" Association="Self.FK__Ksiazki__Kategor__2A4B4B5E">
+          <AssociationSet Name="FK__Ksiazki__Kategor__29572725" Association="Self.FK__Ksiazki__Kategor__29572725">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Ksiazki" EntitySet="Ksiazki" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wypozycze__IDKsi__440B1D61" Association="Self.FK__Wypozycze__IDKsi__440B1D61">
+          <AssociationSet Name="FK__Wypozycze__IDKsi__36B12243" Association="Self.FK__Wypozycze__IDKsi__36B12243">
             <End Role="Ksiazki" EntitySet="Ksiazki" />
             <End Role="Wypozyczenia" EntitySet="Wypozyczenia" />
           </AssociationSet>
@@ -311,6 +313,7 @@
               <MappingFragment StoreEntitySet="Ksiazki">
                 <ScalarProperty Name="IDKsiazki" ColumnName="IDKsiazki" />
                 <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+                <ScalarProperty Name="Wydawnictwo" ColumnName="Wydawnictwo" />
                 <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
                 <ScalarProperty Name="Autor" ColumnName="Autor" />
                 <ScalarProperty Name="DataWydania" ColumnName="DataWydania" />
